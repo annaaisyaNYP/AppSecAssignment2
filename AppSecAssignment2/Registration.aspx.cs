@@ -160,6 +160,10 @@ namespace AppSecAssignment2
             {
                 throw new Exception(ex.ToString());
             }
+            finally
+            {
+                con.Close();
+            }
             if (e != null)
             {
                 return true;
@@ -247,7 +251,7 @@ namespace AppSecAssignment2
                 cmd.Parameters.AddWithValue("@FName", tbFName.Text.Trim());
                 cmd.Parameters.AddWithValue("@LName", tbLName.Text.Trim());
                 cmd.Parameters.AddWithValue("@BirthDate", Convert.ToDateTime(tbBirthDate.Text));
-                cmd.Parameters.AddWithValue("@CCNo", tbCCNo.Text);
+                cmd.Parameters.AddWithValue("@CCNo", Convert.ToBase64String(encryptData(tbCCNo.Text)));
                 cmd.Parameters.AddWithValue("@CCExMth", Convert.ToDateTime(tbCCExMth.Text));
                 cmd.Parameters.AddWithValue("@CVV", tbCVV.Text.Trim());
                 cmd.Parameters.AddWithValue("@PassHash", finalHash);
