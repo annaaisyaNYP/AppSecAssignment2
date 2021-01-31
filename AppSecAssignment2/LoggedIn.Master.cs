@@ -26,7 +26,7 @@ namespace AppSecAssignment2
             Session.Abandon();
             Session.RemoveAll();
 
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Login.aspx", false);
 
             if (Request.Cookies["ASP.NET_SessionId"] != null)
             {
