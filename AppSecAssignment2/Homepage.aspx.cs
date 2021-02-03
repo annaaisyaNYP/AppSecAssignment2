@@ -11,7 +11,13 @@ namespace AppSecAssignment2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["LoggedIn"] != null && Session["AuthToken"] != null && Request.Cookies["AuthToken"] != null)
+            {
+                if (!Session["AuthToken"].ToString().Equals(Request.Cookies["AuthToken"].Value))
+                {
+                    Response.Redirect("Login.aspx", false);
+                }
+            }
         }
     }
 }
