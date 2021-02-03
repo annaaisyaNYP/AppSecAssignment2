@@ -168,8 +168,6 @@ namespace AppSecAssignment2
                 if (userHash.Equals(dbHash))
                 {
                     return true;
-                    //Session["email"] = email;
-                    //Response.Redirect("Success.aspx", false);
                 }
                 else
                 {
@@ -180,8 +178,6 @@ namespace AppSecAssignment2
             else
             {
                 return false;
-                //lbMsg.Text += "Userid or password is not valid. Please try again.";
-                //Response.Redirect("Login.aspx", false);
             }
         }
 

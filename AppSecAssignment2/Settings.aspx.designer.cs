@@ -33,6 +33,15 @@ namespace AppSecAssignment2
         protected global::System.Web.UI.WebControls.Label lbMsg;
 
         /// <summary>
+        /// lbSuccessMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbSuccessMsg;
+
+        /// <summary>
         /// tbCurrPass control.
         /// </summary>
         /// <remarks>
@@ -49,15 +58,6 @@ namespace AppSecAssignment2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbNewPass;
-
-        /// <summary>
-        /// tbConPass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbConPass;
 
         /// <summary>
         /// btnChaPass control.

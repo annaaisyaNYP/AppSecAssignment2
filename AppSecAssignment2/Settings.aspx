@@ -2,44 +2,36 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Settings</h2>
     <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+    </br>
     <table class="nav-justified">
         <caption>
-            Change Password</caption>
-        <tr>
-            <td style="width: 203px">
-                &nbsp;</td>
-            <td>
+            Change Password&nbsp; </br>
                 <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
+                <asp:Label ID="lbSuccessMsg" runat="server" ForeColor="Lime"></asp:Label>
+            </caption>
+        <tr>
+            <td style="width: 30%; height: 30px;">
+                <asp:TextBox ID="tbCurrPass" runat="server" placeholder="Current Password" TextMode="Password"></asp:TextBox>
             </td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td style="width: 203px">
-                Current Password</td>
-            <td>
-                <asp:TextBox ID="tbCurrPass" runat="server" placeholder="Current Password"></asp:TextBox>
+            <td style="width: 30%; height: 30px;">
+                <asp:TextBox ID="tbNewPass" runat="server" placeholder="New Password" TextMode="Password"></asp:TextBox>
             </td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td style="width: 203px">
-                New Password</td>
-            <td>
-                <asp:TextBox ID="tbNewPass" runat="server"></asp:TextBox>
-            </td>
+            <td style="width: 30%; height: 30px;">
+                Requirements: minimum 8 characters, at least one of each: lowercase, uppercase, number, and special character ( !, *, @, #, $, %, ^, &amp;, +, = )</td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td style="width: 203px">
-                Confirm Password</td>
-            <td>
-                <asp:TextBox ID="tbConPass" runat="server"></asp:TextBox>
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="width: 203px">
-                <asp:Button ID="btnChaPass" runat="server" Text="Save" />
+            <td style="width: 30%; height: 30px;">
+                <asp:Button ID="btnChaPass" runat="server" Text="Save" OnClick="btnChaPass_Click" />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
