@@ -96,6 +96,11 @@ namespace AppSecAssignment2
                 lbMsg.Text += "Password is invalid. Please make sure you follow the requirements. </br>";
             }
 
+            if (tbCurrPass.Text == tbNewPass.Text)
+            {
+                lbMsg.Text += "Passwords are the same. Please choose a different password. </br>";
+            }
+
             //All Clear
             if (lbMsg.Text == "")
             {
