@@ -109,9 +109,11 @@
     <Content Include="App_Data\SITConnect_log.ldf">
       <DependentUpon>SITConnect.mdf</DependentUpon>
     </Content>
+    <Content Include="CustomError\404Error.html" />
+    <Content Include="CustomError\GenericError.html" />
+    <Content Include="CustomError\403Error.html" />
     <Content Include="Homepage.aspx" />
     <Content Include="Registration.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -191,13 +193,6 @@
       <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

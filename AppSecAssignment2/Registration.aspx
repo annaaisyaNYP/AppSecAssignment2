@@ -72,7 +72,7 @@
             <tr style="height: 30px">
                 <td style="width: 200px">Password</td>
                 <td style="width: 240px">
-                    <asp:TextBox ID="tbPass" runat="server" onkeyup="javascript:validate()" style="width: 210px"></asp:TextBox>
+                    <asp:TextBox ID="tbPass" runat="server" onkeyup="javascript:validate()" style="width: 210px" TextMode="Password"></asp:TextBox>
                 </td>
                 <td style="width: 200px">
                     <asp:Label ID="lbPassStrength" runat="server">passwordchecker</asp:Label>

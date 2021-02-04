@@ -14,7 +14,7 @@ namespace AppSecAssignment2
     public partial class Login : Page
     {
         string SITConnectionString = ConfigurationManager.ConnectionStrings["SITConnection"].ConnectionString;
-        public int LoginAttemptCount;
+        int LoginAttemptCount;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,11 +53,6 @@ namespace AppSecAssignment2
             if (!IsPasswordCorrect(tbEmail.Text, tbPass.Text))
             {
                 lbMsg.Text += "Password is incorrect! </br>";
-            }
-
-            if (LoginAttemptCount > 3)
-            {
-                lbMsg.Text += "Too many Login attempts. Try again later. </br>";
             }
 
             //All Clear
