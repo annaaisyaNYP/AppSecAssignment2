@@ -14,7 +14,8 @@ namespace AppSecAssignment2
     public partial class Login : Page
     {
         string SITConnectionString = ConfigurationManager.ConnectionStrings["SITConnection"].ConnectionString;
-        int LoginAttemptCount;
+        public int LoginAttemptCount;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lbMsg.Text = "";

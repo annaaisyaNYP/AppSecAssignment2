@@ -96,6 +96,15 @@ namespace AppSecAssignment2
         protected global::System.Web.UI.WebControls.TextBox tbPass;
 
         /// <summary>
+        /// lbPassStrength control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPassStrength;
+
+        /// <summary>
         /// btnSignUp control.
         /// </summary>
         /// <remarks>
