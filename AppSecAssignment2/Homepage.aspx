@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="Homepage" Language="C#" MasterPageFile="~/LoggedIn.Master" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="AppSecAssignment2.Homepage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Panel ID="PanelPassExpired" Visible="false" runat="server" CssClass="alert alert-dismissable alert-warning">
+      <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      <asp:Label ID="lbPassExpired" runat="server">Please change your <a href="Settings.aspx">password</a> immediately. </asp:Label>
+    </asp:Panel>
+
     <div class="jumbotron">
       <h1>Greetings, User!</h1>
       <p>Promotions Extravaganza! 1 - 5 Feb 2021</p>
