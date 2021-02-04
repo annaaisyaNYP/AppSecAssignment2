@@ -242,9 +242,9 @@ namespace AppSecAssignment2
             {
                 SqlConnection con = new SqlConnection(SITConnectionString);
                 string sqlStmt = "INSERT INTO Account(email, fname, lname, birthdate, " +
-                    "ccno, ccexmth, cvv, passwordhash, passwordsalt, [key], IV) " +
+                    "ccno, ccexmth, cvv, passwordhash, passwordsalt, [key], IV, passwordage) " +
                     "VALUES(@Email, @FName, @LName, @BirthDate," +
-                    "@CCNo, @CCExMth, @CVV, @PassHash, @PassSalt, @Key, @IV)";
+                    "@CCNo, @CCExMth, @CVV, @PassHash, @PassSalt, @Key, @IV, @PassAge)";
                 SqlCommand cmd = new SqlCommand(sqlStmt, con);
 
                 cmd.Parameters.AddWithValue("@Email", tbEmail.Text);
@@ -258,6 +258,7 @@ namespace AppSecAssignment2
                 cmd.Parameters.AddWithValue("@PassSalt", salt);
                 cmd.Parameters.AddWithValue("@Key", Convert.ToBase64String(Key));
                 cmd.Parameters.AddWithValue("@IV", Convert.ToBase64String(IV));
+                cmd.Parameters.AddWithValue("@PassAge", DateTime.Now);
 
                 con.Open();
                 cmd.ExecuteNonQuery();

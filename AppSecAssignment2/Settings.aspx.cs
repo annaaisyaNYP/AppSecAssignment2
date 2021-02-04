@@ -96,6 +96,11 @@ namespace AppSecAssignment2
                 lbMsg.Text += "Password is invalid. Please make sure you follow the requirements. </br>";
             }
 
+            if (IsPassTooNew(email))
+            {
+                lbMsg.Text += "Password was changed recently. Please change password at another time. </br>";
+            }
+
             if (tbCurrPass.Text == tbNewPass.Text)
             {
                 lbMsg.Text += "Passwords are the same. Please choose a different password. </br>";
@@ -220,12 +225,59 @@ namespace AppSecAssignment2
             }
         }
 
+        public bool IsPassTooNew(string email)
+        {
+            DateTime passAge;
+            SqlConnection con = new SqlConnection(SITConnectionString);
+            string sqlStmt = "SELECT passwordage from Account where email = @Email";
+            SqlCommand cmd = new SqlCommand(sqlStmt, con);
+            cmd.Parameters.AddWithValue("@Email", email);
+
+            try
+            {
+                con.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["PasswordAge"] != DBNull.Value)
+                        {
+                            passAge = Convert.ToDateTime(reader["PasswordAge"]);
+
+                            DateTime now = DateTime.Now;
+                            TimeSpan interval = now - passAge;
+                            if (interval.TotalMinutes < 5)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        else { return false; }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return false;
+        }
+
         public void UpdatePassword()
         {
             try
             {
                 SqlConnection con = new SqlConnection(SITConnectionString);
-                string sqlStmt = "UPDATE Account SET passwordHash = @PassHash, passwordSalt = @PassSalt, [key] = @Key, IV = @IV " +
+                string sqlStmt = "UPDATE Account SET passwordHash = @PassHash, passwordSalt = @PassSalt, " +
+                    "[key] = @Key, IV = @IV, passwordage = @PassAge " +
                     "WHERE email = @Email";
                 SqlCommand cmd = new SqlCommand(sqlStmt, con);
 
@@ -234,6 +286,7 @@ namespace AppSecAssignment2
                 cmd.Parameters.AddWithValue("@PassSalt",  salt);
                 cmd.Parameters.AddWithValue("@Key",Convert.ToBase64String(Key));
                 cmd.Parameters.AddWithValue("@IV",Convert.ToBase64String(IV));
+                cmd.Parameters.AddWithValue("@PassAge",DateTime.Now);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
