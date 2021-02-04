@@ -19,10 +19,5 @@ namespace AppSecAssignment2
                 }                
             }
         }
-
-        protected void Logout_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

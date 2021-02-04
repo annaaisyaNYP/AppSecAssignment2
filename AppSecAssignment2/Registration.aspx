@@ -72,7 +72,7 @@
             <tr style="height: 30px">
                 <td style="width: 200px">Password</td>
                 <td style="width: 240px">
-                    <asp:TextBox ID="tbPass" runat="server" style="width: 210px" onkeyup="javascript:validate()"></asp:TextBox>
+                    <asp:TextBox ID="tbPass" runat="server" onkeyup="javascript:validate()" style="width: 210px"></asp:TextBox>
                 </td>
                 <td style="width: 200px">
                     <asp:Label ID="lbPassStrength" runat="server">passwordchecker</asp:Label>
@@ -102,41 +102,33 @@
                 return "too_short";
             }
 
-            else if (str.search(/[a-zA-Z]/) == 1) {
-                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require some letters";
-                document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
-                return "no_upc";
-            }
-
-            else if (str.search(/[A-Z]/) == 1) {
+            else if (str.search(/[A-Z]/) == -1) {
                 document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require some uppercase letters";
                 document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
                 return "no_upc";
             }
 
-            else if (str.search(/[a-z]/) == 1) {
+            else if (str.search(/[a-z]/) == -1) {
                 document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require some lowecase letters";
                 document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
                 return "no_lwc";
             }
 
-            else if (str.search(/[0-9]/) == 1) {
+            else if (str.search(/[0-9]/) == -1) {
                 document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require at least 1 number";
                 document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
                 return "no_number";
             }
 
-            else if (str.search(/[!*@#$%^&+=]/) == 1) {
+            else if (str.search(/[!*@#$%^&+=]/) == -1) {
                 document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require at least 1 special character";
                 document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
                 return "no_spc";
             }
 
-            else {
-                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Excellent";
-                document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "Lime";
-                return "good";
-            }
+            document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Excellent";
+            document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "Lime";
+            return "good";
         }
     </script>
 </asp:Content>
