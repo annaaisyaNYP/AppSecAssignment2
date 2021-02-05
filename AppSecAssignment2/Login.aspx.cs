@@ -79,7 +79,7 @@ namespace AppSecAssignment2
         // Taken from https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
         public static bool IsEmailValid(string email)
         {
-            if (string.IsNullOrWhiteSpace(email))
+            if (String.IsNullOrWhiteSpace(email))
                 return false;
 
             try
@@ -265,7 +265,7 @@ namespace AppSecAssignment2
 
             string captchaResponse = Request.Form["g-recaptcha-response"];
 
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(" https://www.google.com/recaptcha/api/siteverify?secret=[ENTER_KEY]/ &response=" + captchaResponse);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(" https://www.google.com/recaptcha/api/siteverify?secret=EnterSecretKey &response=" + captchaResponse);
 
             try
             {

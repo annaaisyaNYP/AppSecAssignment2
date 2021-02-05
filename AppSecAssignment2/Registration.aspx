@@ -97,36 +97,36 @@
             var str = document.getElementById('<%= tbPass.ClientID %>').value;
 
             if (str.length < 8) {
-                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password length must be at least 8 characters.";
+                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Very Weak - Password length must be at least 8 characters.";
                 document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "Red";
                 return "too_short";
             }
 
+            else if (str.search(/[a-z]/) == -1) {
+                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Weak - Password require some lowecase letters";
+                document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FF8C00";
+                return "no_lwc";
+            }
+
             else if (str.search(/[A-Z]/) == -1) {
-                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require some uppercase letters";
+                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Medium - Password require some uppercase letters";
                 document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
                 return "no_upc";
             }
 
-            else if (str.search(/[a-z]/) == -1) {
-                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require some lowecase letters";
-                document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
-                return "no_lwc";
-            }
-
             else if (str.search(/[0-9]/) == -1) {
-                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require at least 1 number";
+                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Okay - Password require at least 1 number";
                 document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
                 return "no_number";
             }
 
             else if (str.search(/[!*@#$%^&+=]/) == -1) {
-                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Password require at least 1 special character";
+                document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Strong - Password require at least 1 special character";
                 document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "#FFCC00";
                 return "no_spc";
             }
 
-            document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Excellent";
+            document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Very Strong";
             document.getElementById('<%= lbPassStrength.ClientID %>').style.color = "Lime";
             return "good";
         }
