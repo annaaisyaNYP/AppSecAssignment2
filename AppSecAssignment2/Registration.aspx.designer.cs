@@ -15,6 +15,24 @@ namespace AppSecAssignment2
     {
 
         /// <summary>
+        /// PanelSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelSuccess;
+
+        /// <summary>
+        /// lbSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbSuccess;
+
+        /// <summary>
         /// lbMsg control.
         /// </summary>
         /// <remarks>

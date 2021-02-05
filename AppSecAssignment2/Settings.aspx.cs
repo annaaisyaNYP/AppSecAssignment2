@@ -28,6 +28,12 @@ namespace AppSecAssignment2
                     Response.Redirect("Login.aspx", false);
                 }
             }
+
+            if (Session["LoggedIn"] == null)
+            {
+                Response.Redirect("~/CustomError/403Error.html");
+            }
+
             lbMsg.Text = "";
             lbSuccessMsg.Text = "";
         }

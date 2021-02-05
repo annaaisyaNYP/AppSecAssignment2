@@ -41,7 +41,7 @@
     </table>
     <script type="text/javascript">
         function validate() {
-            var str = document.getElementById('<%= tbPass.ClientID %>').value;
+            var str = document.getElementById('<%= tbNewPass.ClientID %>').value;
 
             if (str.length < 8) {
                 document.getElementById('<%= lbPassStrength.ClientID %>').innerHTML = "Very Weak - Password length must be at least 8 characters.";

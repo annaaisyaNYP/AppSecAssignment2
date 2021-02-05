@@ -17,6 +17,11 @@ namespace AppSecAssignment2
                 }
             }
 
+            if (Session["LoggedIn"] == null)
+            {
+                Response.Redirect("~/CustomError/403Error.html");
+            }
+
             string email = Session["LoggedIn"].ToString();
             if (IsPassOld(email))
             {

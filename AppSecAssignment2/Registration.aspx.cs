@@ -317,7 +317,7 @@ namespace AppSecAssignment2
                 Key = cipher.Key;
                 IV = cipher.IV;
                 CreateAccount();
-                Response.Redirect("Login.aspx");
+                PanelSuccess.Visible = true;
             }
             
         }
