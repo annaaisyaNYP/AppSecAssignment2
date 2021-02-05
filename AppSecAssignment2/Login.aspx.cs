@@ -8,6 +8,11 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.IO;
+using System.Web.Script.Serialization;
+using System.Web.Services;
+using System.Collections.Generic;
 
 namespace AppSecAssignment2
 {
@@ -53,6 +58,11 @@ namespace AppSecAssignment2
             if (!IsPasswordCorrect(tbEmail.Text, tbPass.Text))
             {
                 lbMsg.Text += "Password is incorrect! </br>";
+            }
+
+            if (!ValidateCaptcha())
+            {
+                lbMsg.Text += "Action invalid. </br>";
             }
 
             //All Clear
@@ -241,6 +251,45 @@ namespace AppSecAssignment2
                 con.Close();
             }
             return s;
+        }
+        
+
+        // Google ReCaptcha V3
+        public string success { get; set; }
+
+        public List<string> ErrorMessage { get; set; }
+
+        public bool ValidateCaptcha()
+        {
+            bool result = true;
+
+            string captchaResponse = Request.Form["g-recaptcha-response"];
+
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(" https://www.google.com/recaptcha/api/siteverify?secret=[ENTER_KEY]/ &response=" + captchaResponse);
+
+            try
+            {
+                using (WebResponse wbResponse = req.GetResponse())
+                {
+                    using (StreamReader readStream = new StreamReader(wbResponse.GetResponseStream()))
+                    {
+                        string jsonResponse = readStream.ReadToEnd();
+
+                        Session["GoogleReCaptchaV3"] = jsonResponse.ToString();
+
+                        JavaScriptSerializer js = new JavaScriptSerializer();
+                        Login jsonObject = js.Deserialize<Login>(jsonResponse);
+
+                        result = Convert.ToBoolean(jsonObject.success);
+                    }
+                }
+
+                return result;
+            }
+            catch (WebException ex)
+            {
+                throw ex;
+            }
         }
     }
 }
